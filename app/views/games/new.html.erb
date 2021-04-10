@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Start a new game!</h1>
+  <p>Try to build the longest word possible using the characters below (beware, you can only use each character once!!)</p>
+</div>
+
+<div class="container">
+  <ul id="characters">
+    <% @grid.each do |char| %>
+      <li class="character"><%= char %></li>
+    <% end %>
+  </ul>
+
+  <p>What is the longest word you can find?</p>
+
+  <form action="/score" method="post" class="form-group">
+    <input type="text" name="word">
+    <input type="hidden" name="grid" value="<%= @grid %>">
+    <input type="submit" value="Play!" class="form-control btn btn-primary">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+</div>
+
+
